@@ -42,7 +42,7 @@ class Activity extends CI_Controller
         $this->load->view('intranet_includes/v_footer.php');
     }
 
-    public function simpan()
+    public function simpan_ori()
     {
         $file_cek = $this->input->post("file");
 
@@ -403,6 +403,7 @@ class Activity extends CI_Controller
     function proses_edit()
     {
         $data['id'] = $this->input->post("id");
+        $data['id2'] = $this->input->post("id2");
         $data['kode_kegiatan'] = $this->input->post("kode_kegiatan");
         $data['activity'] = $this->input->post("activity");
         $data['team'] = $this->input->post("team");
