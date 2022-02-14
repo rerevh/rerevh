@@ -124,6 +124,89 @@ class Activity extends CI_Controller
         $arr = array('err' => $err, 'klas' => $klas);
         echo json_encode($arr);
     }
+    
+    public function simpan()
+    {
+        $file_cek = $this->input->post("file");
+
+        if ($file_cek == 'undefined') {
+            $err = "Masukkan file yang akan diupload";
+            $klas = "#file";
+        } else {
+            $file = $_FILES['file']['name'];
+            $fileExt = $this->get_file_extension($_FILES['file']['name']);
+            $exp = "uploadexcel";
+            $nama_file = $exp;
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = '*';
+            $config['max_size'] = '5000000'; // max file yang boleh di upload 1 MB
+            $config['file_name'] = $nama_file . "." . strtolower($fileExt);
+            $config['overwrite'] = true;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('file')) {
+                $path = './uploads/uploadexcel.xlsx';
+                if (file_exists($path)) {
+                    include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+                    $excelreader = new PHPExcel_Reader_Excel2007();
+                    $loadexcel = $excelreader->load('./uploads/uploadexcel.xlsx'); // Load file yang telah diupload ke folder excel
+                    $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+                    $numrow = 1;
+                    //$sudah = false;
+                    $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+                    $numrow = 1;
+                    foreach ($sheet as $row) {
+                        // Cek $numrow apakah lebih dari 1
+                        // Artinya karena baris pertama adalah nama-nama kolom
+                        // Jadi dilewat saja, tidak usah diimport
+                        if ($numrow > 1) {
+                            // Kita push (add) array data ke variabel data
+                            $data['kode_kegiatan'] = $row['A'];
+                            $data['activity'] = $row['B'];
+                            $data['team'] = $row['C'];
+                            $data['total_usd'] = str_replace(".", "", $row['D']);
+                            $data['total_idr'] = str_replace(".", "", $row['E']);
+                            $data['time_per_year'] = str_replace(".", "", $row['F']);
+                            $data['estimate_per_activity'] = str_replace(".", "", $row['G']);
+                            $data['participants'] = str_replace(".", "",  $row['H']);
+                            $data['daystimes'] =  str_replace(".", "",  $row['I']);
+                            $data['meals'] = str_replace(".", "",  $row['J']);
+                            $data['airfare'] = str_replace(".", "",  $row['K']);
+                            $data['local_transport'] = str_replace(".", "",  $row['L']);
+                            $data['mie'] = str_replace(".", "",  $row['M']);
+                            $data['meeting_package'] =  str_replace(".", "",  $row['N']);
+                            $data['printing'] = str_replace(".", "",  $row['O']);
+                            $data['facilitator_fee'] = str_replace(".", "",  $row['P']);
+                            $data['miscellaneous'] = str_replace(".", "",  $row['Q']);
+
+                            $result = $this->Model_lib->insert("tb_detail_budget", $data);
+                        }
+
+                        $numrow++; // Tambah 1 setiap kali looping
+                    }
+
+                    $err = "s";
+                    $klas = "-";
+                } else {
+
+                    // $result = $this->Model_lib->insert($tabel,$data);
+                    $err = "Excel yang di upload  tidak dapat dibaca";
+                    $klas = "-";
+                }
+            } else {
+                $error = $this->upload->display_errors();
+                $err = $error . CI_VERSION;
+                //$err="Unggah file gagal dilakukan. Pastikan ukuran dan tipe file sesuai yang telah ditentukan";
+                $klas = "-";
+            }
+        }
+        $arr = array('err' => $err, 'klas' => $klas);
+        echo json_encode($arr);
+    }    
 
     function tabel()
     {
@@ -455,4 +538,171 @@ class Activity extends CI_Controller
         if (!$lastDotPos) return false;
         return substr($filename, $lastDotPos + 1);
     }
+    
+    
+    public function simpan_1()
+    {
+        $file_cek = $this->input->post("file");
+
+        if ($file_cek == 'undefined') {
+            $err = "Masukkan file yang akan diupload";
+            $klas = "#file";
+        } else {
+            $file = $_FILES['file']['name'];
+            $fileExt = $this->get_file_extension($_FILES['file']['name']);
+            $exp = "uploadexcel";
+            $nama_file = $exp;
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = '*';
+            $config['max_size'] = '5000000'; // max file yang boleh di upload 1 MB
+            $config['file_name'] = $nama_file . "." . strtolower($fileExt);
+            $config['overwrite'] = true;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('file')) {
+                $path = './uploads/uploadexcel.xlsx';
+                if (file_exists($path)) {
+                    include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+                    $excelreader = new PHPExcel_Reader_Excel2007();
+                    $loadexcel = $excelreader->load('./uploads/uploadexcel.xlsx'); // Load file yang telah diupload ke folder excel
+                    $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+                    $numrow = 1;
+                    //$sudah = false;
+                    $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+                    $numrow = 1;
+                    foreach ($sheet as $row) {
+                        // Cek $numrow apakah lebih dari 1
+                        // Artinya karena baris pertama adalah nama-nama kolom
+                        // Jadi dilewat saja, tidak usah diimport
+                        if ($numrow > 1) {
+                            // Kita push (add) array data ke variabel data
+                            $data['kode_kegiatan'] = $row['A'];
+                            $data['activity'] = $row['B'];
+                            $data['team'] = $row['C'];
+                            $data['total_usd'] = str_replace(".", "", $row['D']);
+                            $data['total_idr'] = str_replace(".", "", $row['E']);
+                            $data['time_per_year'] = str_replace(".", "", $row['F']);
+                            $data['estimate_per_activity'] = str_replace(".", "", $row['G']);
+                            $data['participants'] = str_replace(".", "",  $row['H']);
+                            $data['daystimes'] =  str_replace(".", "",  $row['I']);
+                            $data['meals'] = str_replace(".", "",  $row['J']);
+                            $data['airfare'] = str_replace(".", "",  $row['K']);
+                            $data['local_transport'] = str_replace(".", "",  $row['L']);
+                            $data['mie'] = str_replace(".", "",  $row['M']);
+                            $data['meeting_package'] =  str_replace(".", "",  $row['N']);
+                            $data['printing'] = str_replace(".", "",  $row['O']);
+                            $data['facilitator_fee'] = str_replace(".", "",  $row['P']);
+                            $data['miscellaneous'] = str_replace(".", "",  $row['Q']);
+
+                            $result = $this->Model_lib->insert("tb_detail_budget", $data);
+                        }
+
+                        $numrow++; // Tambah 1 setiap kali looping
+                    }
+
+                    $err = "s";
+                    $klas = "-";
+                } else {
+
+                    // $result = $this->Model_lib->insert($tabel,$data);
+                    $err = "Excel yang di upload  tidak dapat dibaca";
+                    $klas = "-";
+                }
+            } else {
+                $error = $this->upload->display_errors();
+                $err = $error . CI_VERSION;
+                //$err="Unggah file gagal dilakukan. Pastikan ukuran dan tipe file sesuai yang telah ditentukan";
+                $klas = "-";
+            }
+        }
+        $arr = array('err' => $err, 'klas' => $klas);
+        echo json_encode($arr);
+    }    
+    
+    public function simpan_2()
+    {
+        $file_cek = $this->input->post("file");
+
+        if ($file_cek == 'undefined') {
+            $err = "Masukkan file yang akan diupload";
+            $klas = "#file";
+        } else {
+            $file = $_FILES['file']['name'];
+            $fileExt = $this->get_file_extension($_FILES['file']['name']);
+            $exp = "uploadexcel";
+            $nama_file = $exp;
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = '*';
+            $config['max_size'] = '5000000'; // max file yang boleh di upload 1 MB
+            $config['file_name'] = $nama_file . "." . strtolower($fileExt);
+            $config['overwrite'] = true;
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('file')) {
+                $path = './uploads/uploadexcel.xlsx';
+                if (file_exists($path)) {
+                    include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+                    $excelreader = new PHPExcel_Reader_Excel2007();
+                    $loadexcel = $excelreader->load('./uploads/uploadexcel.xlsx'); // Load file yang telah diupload ke folder excel
+                    $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+                    $numrow = 1;
+                    //$sudah = false;
+                    $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+
+                    $numrow = 1;
+                    foreach ($sheet as $row) {
+                        // Cek $numrow apakah lebih dari 1
+                        // Artinya karena baris pertama adalah nama-nama kolom
+                        // Jadi dilewat saja, tidak usah diimport
+                        if ($numrow > 1) {
+                            // Kita push (add) array data ke variabel data
+                            $data['kode_kegiatan'] = $row['A'];
+                            $data['activity'] = $row['B'];
+                            $data['team'] = $row['C'];
+                            $data['total_usd'] = str_replace(".", "", $row['D']);
+                            $data['total_idr'] = str_replace(".", "", $row['E']);
+                            $data['time_per_year'] = str_replace(".", "", $row['F']);
+                            $data['estimate_per_activity'] = str_replace(".", "", $row['G']);
+                            $data['participants'] = str_replace(".", "",  $row['H']);
+                            $data['daystimes'] =  str_replace(".", "",  $row['I']);
+                            $data['meals'] = str_replace(".", "",  $row['J']);
+                            $data['airfare'] = str_replace(".", "",  $row['K']);
+                            $data['local_transport'] = str_replace(".", "",  $row['L']);
+                            $data['mie'] = str_replace(".", "",  $row['M']);
+                            $data['meeting_package'] =  str_replace(".", "",  $row['N']);
+                            $data['printing'] = str_replace(".", "",  $row['O']);
+                            $data['facilitator_fee'] = str_replace(".", "",  $row['P']);
+                            $data['miscellaneous'] = str_replace(".", "",  $row['Q']);
+
+                            $result = $this->Model_lib->insert("tb_detail_budget", $data);
+                        }
+
+                        $numrow++; // Tambah 1 setiap kali looping
+                    }
+
+                    $err = "s";
+                    $klas = "-";
+                } else {
+
+                    // $result = $this->Model_lib->insert($tabel,$data);
+                    $err = "Excel yang di upload  tidak dapat dibaca";
+                    $klas = "-";
+                }
+            } else {
+                $error = $this->upload->display_errors();
+                $err = $error . CI_VERSION;
+                //$err="Unggah file gagal dilakukan. Pastikan ukuran dan tipe file sesuai yang telah ditentukan";
+                $klas = "-";
+            }
+        }
+        $arr = array('err' => $err, 'klas' => $klas);
+        echo json_encode($arr);
+    }      
 }
