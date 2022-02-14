@@ -1,0 +1,220 @@
+/*site.css*/
+/*#scrollable{
+    height: 25rem;
+    overflow-y: auto;
+}
+.boxcontent{
+    border:1px solid #E4E4E4 !important;
+    padding: 20px 27px;
+    border-radius: 0 12px 12px 12px;
+}*/
+
+/*modified.css*/
+/*.borderBox {
+    border-radius: 25px;
+    border: solid thin #ABABAB;
+    line-height: 1.6;
+    transition: 0.3s;
+}
+
+.borderBox:hover {
+    box-shadow:2px 5px 3px 0 #CCCCCC;
+}
+
+#more, #more1, #more2 {display: none;}*/
+
+
+/*skillmap.css*/
+/*
+.th-disabled{
+    background-color:#bdc3c7;
+}
+
+.border-shadow{
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+}
+*/
+
+#info{
+    color: #207BB9;
+}
+
+/*Button*/
+.btnTop{
+    background-color: #207BB9;
+    border-radius: 4px !important;
+    cursor: pointer;
+}
+.btnTop:hover{
+    background-color: #ffffff;
+    color: #207BB9 !important;
+    border: 1px solid #207BB9;
+}
+
+/*Dropdown*/
+.multiselect-container{
+    width: 20rem;
+    background-color: #EFEFEF;
+}
+.multiselect-option span label{
+    white-space: normal;
+}
+.dropdown-item{
+    display: block;
+    width: 19rem !important;
+    clear: both;
+    margin-bottom:7px !important;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: white;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+    color:#207BB9;
+    border-radius:4px;
+    margin-left:0.47rem;
+    margin-right:0.15rem;
+}
+.form-check-input{
+    display:none !important;
+    width:1px;
+    height:1px;
+}
+.form-check{
+    padding:0 !important;
+}
+.dropdown-item:hover{
+    background-color:#3498db;
+    color: white;
+}
+
+/*Table*/
+.xscroll{
+    display: inline-block;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+    padding-bottom: 0.5rem;
+    /*border:1px solid;*/
+}
+.sticky-left{
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+}
+.sticky-head{
+    height: 8.5rem;
+}
+.halfborderbottom{
+    margin:0 10%;
+    border-bottom: 1px solid #207BB9;
+}
+.gradehrl{
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
+.tr_height{
+    height: 2.5em;
+}
+
+.tr_height td:first-child{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.roundedth{
+    border-radius: 8px 0 0 0; /* curves the top left & right */
+    border:none !important;
+    cursor: context-menu;
+    position: sticky;
+    top: 0;
+    background-color: #195194;
+    width: 7em;
+    /* height: 9em; */
+    vertical-align: middle !important;
+}
+.bgssg{
+    background-color: #207BB9;
+}
+
+.rounded-head{
+    border-radius: 8px 8px 0 0; /* curves the top left & right */
+    border:none !important;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    background-color: #195194;
+}
+.SGHead{
+    min-width: 10em;
+    max-width: 17em;
+    white-space:normal;
+    height: 8.5em;
+    vertical-align: middle !important;
+}
+.SGheadExpand{
+    height: 3.5em;
+    vertical-align: middle !important;
+}
+.SSEGhead{
+    max-width: 17em;
+    height: 5em;
+    position:sticky;
+    top: 3.5em;
+    white-space:normal;
+    vertical-align: middle !important;
+}
+/*Scrollbar*/
+[id^='collapse-table-']::-webkit-scrollbar {
+    width: 6px;
+    height:6px;
+}
+
+[id^='collapse-table-']::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+[id^='collapse-table-']::-webkit-scrollbar-thumb {
+    background-color: #A0A0A0;
+    border-radius: 20px;
+}
+/*Scrollbar*/
+
+.green{
+    width:16px;
+    height:16px;
+    border-radius:100%;
+    /*margin-top:0.42rem;*/
+    margin-bottom:0.5rem;
+    background-color:#47DD2F;
+}
+.orange{
+    width:16px;
+    height:16px;
+    border-radius:100%;
+    /*margin-top:0.42rem;*/
+    margin-bottom:0.5rem;
+    background-color:#FF9900;
+    /*cursor: pointer;*/
+}
+.white{
+    width:16px;
+    height:16px;
+    border-radius:100%;
+    /*margin-top:0.42rem;*/
+    margin-bottom:0.5rem;
+    background-color:white;
+}
+.lightgrey{
+    background-color:#bdc3c7;
+}
+
+[id^='collapse-table-']{
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+    height: 450px;
+}
+

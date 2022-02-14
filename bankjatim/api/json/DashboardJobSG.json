@@ -1,0 +1,69 @@
+{
+	"JobSG":[
+		{
+			"SG": "Business Management - BMA",
+			"HRL": [1,1,1,1,0,1,1,1,1,1,1,0,0,0,0]
+		},
+		{
+			"SG": "Corporate Communicaton & Relation Management - CCR",
+			"HRL": [0,1,0,1,0,1,0,1,1,1,1,1,0,0,0]
+		},
+		{
+			"SG": "Drilling - DRI",
+			"HRL": [1,0,1,1,1,1,0,1,0,0,1,0,0,0,0]
+		},
+		{
+			"SG": "Engineering - ENG",
+			"HRL": [2,2,2,2,2,1,2,1,2,2,2,2,2,2,2]
+		},
+		{
+			"SG": "Finance Management - FMA",
+			"HRL": [2,1,2,1,1,1,1,1,1,1,1,1,0,0,0]
+		},
+		{
+			"SG": "General Affairs - GAF",
+			"HRL": [0,0,2,0,0,2,2,1,2,1,1,1,1,0,0]
+		},
+		{
+			"SG": "Geoscience - GEO",
+			"HRL": [1,0,1,0,1,1,1,1,1,1,1,0,1,0,0]
+		},
+		{
+			"SG": "Governance, Risk and Control - GRC",
+			"HRL": [0,1,1,1,0,1,1,1,1,1,1,0,0,0,0]
+		},
+		{
+			"SG": "HSSE",
+			"HRL": [0,1,0,1,1,1,1,1,1,1,1,1,0,0,0]
+		},
+		{
+			"SG": "Human Resource Management - HRM",
+			"HRL": [0,0,1,0,0,1,1,1,1,1,1,0,0,0,0]
+		},
+		{
+			"SG": "Information & Communication Technology - ICT",
+			"HRL": [0,0,1,0,0,1,0,1,1,1,1,1,0,0,0]
+		},
+		{
+			"SG": "Legal - LEG",
+			"HRL": [0,0,2,1,0,1,0,1,1,1,1,0,0,0,0]
+		},
+		{
+			"SG": "Refinery - REF",
+			"HRL": [0,0,1,0,0,0,0,1,0,0,0,0,0,0,0]
+		},
+		{
+			"SG": "Reservoir & Production Engineering - RPE",
+			"HRL": [1,0,1,1,1,1,1,1,1,1,0,0,1,0,0]
+		},
+		{
+			"SG": "Supply Chain Management - SCM",
+			"HRL": [0,0,1,0,0,1,0,1,0,1,1,1,0,0,0]
+		},
+		{
+			"SG": "Surface Facilities - SFA",
+			"HRL": [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+		}
+
+	]
+}
