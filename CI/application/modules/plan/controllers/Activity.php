@@ -490,16 +490,20 @@ class Activity extends CI_Controller
         $data['kode_kegiatan'] = $this->input->post("kode_kegiatan");
         $data['activity'] = $this->input->post("activity");
         $data['team'] = $this->input->post("team");
-
+        $data['total_usd'] = $this->input->post("total_usd");
+        $data['total_idr'] = $this->input->post("total_idr");
+        $data['time_per_year'] = $this->input->post("time_per_year");
+        $data['estimate_per_activity'] = $this->input->post("estimate_per_activity");
+        $data['participants'] = $this->input->post("participants");
+        $data['daystimes'] = $this->input->post("daystimes");
+        $data['meals'] = $this->input->post("meals");
+        $data['airfare'] = $this->input->post("airfare");
         $data['local_transport'] = $this->input->post("local_transport");
         $data['mie'] = $this->input->post("mie");
         $data['meeting_package'] = $this->input->post("meeting_package");
         $data['printing'] = $this->input->post("printing");
         $data['facilitator_fee'] = $this->input->post("facilitator_fee");
         $data['miscellaneous'] = $this->input->post("miscellaneous");
-        
-        $data['total_usd'] = $this->input->post("total_usd");
-        $data['total_idr'] = $this->input->post("total_idr");        
         if (empty($data['kode_kegiatan'])) {
             $err = "Please insert code activity";
             $klas = "#kode_kegiatan";
