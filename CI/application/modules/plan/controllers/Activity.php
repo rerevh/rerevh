@@ -42,7 +42,7 @@ class Activity extends CI_Controller
         $this->load->view('intranet_includes/v_footer.php');
     }
 
-    public function simpan()
+    public function simpan_ori()
     {
         $file_cek = $this->input->post("file");
 
